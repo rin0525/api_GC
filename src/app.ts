@@ -29,7 +29,7 @@ await app.register(import('@fastify/auth'))
 await app.register(import('@fastify/swagger'), {
   openapi: {
     info: {
-      title: '호서대학교 졸업',
+      title: '호서대학교',
       description: '',
       version: '1.0.0',
     },

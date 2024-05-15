@@ -25,11 +25,6 @@ export interface MemberTable extends _TimestampTable {
   email: string
 
   /**
-   * 전화번호
-   */
-  phone: string
-
-  /**
    * 비밀번호
    */
   password: string
