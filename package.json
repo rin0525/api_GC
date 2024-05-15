@@ -1,0 +1,37 @@
+{
+  "name": "hoseo",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf dist && swc ./src -d ./dist --strip-leading-paths"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@9.1.1+sha256.9551e803dcb7a1839fdf5416153a844060c7bce013218ce823410532504ac10b",
+  "dependencies": {
+    "@fastify/auth": "^4.6.1",
+    "@fastify/autoload": "^5.8.2",
+    "@fastify/cors": "^9.0.1",
+    "@fastify/env": "^4.3.0",
+    "@fastify/sensible": "^5.6.0",
+    "@fastify/swagger": "^8.14.0",
+    "@fastify/swagger-ui": "^3.0.0",
+    "@fastify/type-provider-typebox": "^4.0.0",
+    "argon2": "^0.40.1",
+    "fastify": "^4.27.0",
+    "jose": "^5.3.0",
+    "kysely": "^0.27.3",
+    "mysql2": "^3.9.7"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.7.3",
+    "@swc/cli": "^0.3.12",
+    "@swc/core": "^1.5.7",
+    "@tsconfig/node21": "^21.0.3",
+    "@types/node": "^20.12.12",
+    "typescript": "^5.4.5"
+  }
+}
