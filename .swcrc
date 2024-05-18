@@ -8,6 +8,13 @@
       "dynamicImport": false
     },
     "baseUrl": ".",
-    "target": "es2022"
+    "target": "es2022",
+    "preserveAllComments": false
+  },
+  "module": {
+    "type": "es6",
+    "strict": true,
+    "noInterop": true,
+    "resolveFully": true
   }
 }

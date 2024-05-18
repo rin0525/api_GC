@@ -62,6 +62,9 @@ await app.register(import('@fastify/autoload'), {
   routeParams: true,
   indexPattern: /^$/,
   encapsulate: false,
+  forceESM: true,
+  ignoreFilter: (path) =>
+    path.includes('table') || path.includes('enum') || path.includes('migrations') || path.includes('database.'),
 })
 
 await app.register(import('@fastify/autoload'), {

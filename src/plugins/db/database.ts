@@ -32,10 +32,5 @@ export interface Database {
   /**
    * 사용자가 수강한 교과목
    */
-  memberCreditGroup: MemberCreditGroupTable
-
-  /**
-   * 사용자가 수강한 교과목
-   */
   memberCredit: MemberCreditTable
 }
