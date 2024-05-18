@@ -1,5 +1,4 @@
 import _ from 'lodash'
-import * as R from 'rambda'
 import * as XLSX from 'xlsx'
 import { CreditKind } from '../../plugins/db/index.js'
 
@@ -47,11 +46,9 @@ export class SheetProcessor {
    * 모든 학점 정보를 가져옵니다
    */
   getCredits(): Credit[] {
-    const credits = R.pipe(
-      R.mapObjIndexed((value: string, key: string) => this.#getCredit(key as CreditKind, value)),
-      R.values,
-    )(CREDIT_KIND_RANGE_MAP)
-
+    const credits = _(CREDIT_KIND_RANGE_MAP)
+      .map((value: string, key: string) => this.#getCredit(key as CreditKind, value))
+      .value()
     return credits
   }
 
