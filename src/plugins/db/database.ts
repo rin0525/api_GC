@@ -1,4 +1,10 @@
-import type { DepartmentTable, MemberSubjectTable, MemberTable, SubjectTable } from './tables/index.js'
+import type {
+  DepartmentTable,
+  MemberCreditTable,
+  MemberSubjectTable,
+  MemberTable,
+  SubjectTable,
+} from './tables/index.js'
 
 export const autoload = false
 
@@ -22,4 +28,14 @@ export interface Database {
    * 사용자가 수강한 교과목
    */
   memberSubject: MemberSubjectTable
+
+  /**
+   * 사용자가 수강한 교과목
+   */
+  memberCreditGroup: MemberCreditGroupTable
+
+  /**
+   * 사용자가 수강한 교과목
+   */
+  memberCredit: MemberCreditTable
 }

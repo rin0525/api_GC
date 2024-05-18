@@ -10,11 +10,6 @@ export interface SubjectTable extends _TimestampTable {
   id: string
 
   /**
-   * 이수 구분
-   */
-  kind: string
-
-  /**
    * 학과 이름
    */
   name: string

@@ -7,9 +7,19 @@ export interface MemberSubjectTable extends _TimestampTable {
   id: Generated<number>
 
   /**
+   * 이수 구분
+   */
+  kind: string
+
+  /**
    * 사용자 ID
    */
   memberId: number
+
+  /**
+   * 사용자가 직접 올린 경우
+   */
+  isFromXlsx: Generated<boolean>
 
   /**
    * 교과목코드
@@ -24,12 +34,12 @@ export interface MemberSubjectTable extends _TimestampTable {
   /**
    * 학기
    */
-  semester: string
+  semester: number
 
   /**
    * 학점
    */
-  credit: string
+  credit: number
 
   /**
    * 성적

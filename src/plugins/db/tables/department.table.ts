@@ -1,10 +1,10 @@
-import type { Insertable, Selectable, Updateable } from 'kysely'
+import type { Generated, Insertable, Selectable, Updateable } from 'kysely'
 import type { _TimestampTable } from './_timestamp.table.js'
 
 export const autoload = false
 
 export interface DepartmentTable extends _TimestampTable {
-  id: number
+  id: Generated<number>
 
   /**
    * 학과 이름

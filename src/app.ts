@@ -18,6 +18,8 @@ await app.register(import('@fastify/env'), {
   schema: ConfigSchema,
 })
 
+await app.register(import('@fastify/multipart'), { logLevel: 'debug' })
+
 await app.register(import('@fastify/sensible'))
 
 app.decorate('isLocal', app.config.ENVIRONMENT === 'local')

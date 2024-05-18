@@ -1,4 +1,5 @@
 import { type FastifyPluginAsyncTypebox, Type, TypeBoxValidatorCompiler } from '@fastify/type-provider-typebox'
+import { sql } from 'kysely'
 import { jsonBuildObject } from 'kysely/helpers/mysql'
 
 export default (async (app) => {
@@ -17,13 +18,13 @@ export default (async (app) => {
           200: Type.Array(
             Type.Object({
               id: Type.Number(),
+              kind: Type.String(),
               year: Type.Number(),
-              semester: Type.String(),
+              semester: Type.Number(),
               credit: Type.Number(),
               grade: Type.String(),
               subject: Type.Object({
                 id: Type.String(),
-                kind: Type.String(),
                 name: Type.String(),
               }),
             }),
@@ -34,8 +35,8 @@ export default (async (app) => {
       onRequest: app.auth([app.isAuthenticated]),
     },
     async (request, reply) => {
-      // 사용자 정보를 데이터베이스에서 가져옵니다
-      const member = await app.db
+      // 이수교과목 정보를 데이터베이스에서 불러옵니다
+      const subjects = await app.db
         .selectFrom('memberSubject as ms')
         .where('ms.memberId', '=', request.member.id)
         .innerJoin('subject as s', 's.id', 'ms.subjectId')
@@ -43,18 +44,12 @@ export default (async (app) => {
         .select((eb) =>
           jsonBuildObject({
             id: eb.ref('s.id'),
-            kind: eb.ref('s.kind'),
             name: eb.ref('s.name'),
           }).as('subject'),
         )
-        .executeTakeFirst()
+        .execute()
 
-      // 일치하는 사용자 정보가 없는 경우에 401 응답을 내려줍니다
-      if (!member) {
-        return reply.unauthorized()
-      }
-
-      return member
+      return subjects
     },
   )
 }) satisfies FastifyPluginAsyncTypebox

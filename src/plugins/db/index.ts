@@ -48,6 +48,9 @@ export default (async (app) => {
   })
 
   app.decorate('migrator', migrator)
+
+  app.addHook('onClose', () => kysely.destroy())
 }) satisfies FastifyPluginAsyncTypebox
 
 export type * from './tables/index.js'
+export { CreditKind } from './tables/index.js'
